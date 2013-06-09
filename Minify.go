@@ -6,6 +6,8 @@ import (
 	"strings"
 )
 
+var spaceRegexp = regexp.MustCompile(`\s{2,}`)
+
 func Minify(blocks []Block, file string) {
 	for _, block := range blocks {
 		showSelectors(string(block.selector))
@@ -45,10 +47,5 @@ func minifyProp(property string) string {
 }
 
 func cleanSpaces(str string) string {
-	str = strings.TrimSpace(str)
-	re := regexp.MustCompile(`\s\s`)
-	for str = re.ReplaceAllString(str, " "); re.Find([]byte(str)) != nil; {
-		str = re.ReplaceAllString(str, " ")
-	}
-	return str
+	return spaceRegexp.ReplaceAllString(strings.TrimSpace(str), " ")
 }
