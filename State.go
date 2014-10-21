@@ -26,12 +26,12 @@ const (
 // Parser constants
 const (
 	STARTING_COMMENT = iota
-	IN_COMMENT       = iota
-	CLOSING_COMMENT  = iota
-	COMMENT_CLOSED   = iota
-	IN_SELECTOR      = iota
-	IN_PROPERTY      = iota
-	IN_VALUE         = iota
+	IN_COMMENT
+	CLOSING_COMMENT
+	COMMENT_CLOSED
+	IN_SELECTOR
+	IN_PROPERTY
+	IN_VALUE
 )
 
 func (s *State) parse(letter byte) {
